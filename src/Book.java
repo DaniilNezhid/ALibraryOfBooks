@@ -1,4 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
 
 public class Book {
     private String title = "";
