@@ -14,5 +14,6 @@ public class Main {
         Oracle.setReview("Cool book");
         System.out.println(Oracle.getRating());
         System.out.println(Oracle.getReview());
+        System.out.println(Oracle);
     }
 }

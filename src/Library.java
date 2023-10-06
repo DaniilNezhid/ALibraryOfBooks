@@ -1,41 +1,43 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class Library {
-    ArrayList<Book> Books = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
+
     void addBook(Book book){
-        Books.add(book);
+        books.add(book);
     }
     void removeBook(Book book){
-        Books.remove(book);
+        books.remove(book);
     }
-    public Book findBooksByTitle(String title){
-        for(Book book : Books){
-            if(book.getTitle().equals(title)){
-                System.out.println(book.toString());
-                return book;
+
+    public ArrayList<Book>  findBooksByTitle(String title){
+        ArrayList<Book> result = new ArrayList<>();
+        for(Book book : books){
+            if(!title.isEmpty()  && book.getTitle().equals(title)){
+                result.add(book);
             }
         }
-        return null;
+        return result;
     }
+
     public ArrayList<Book> findBooksByAuthor(String author){
-        ArrayList<Book> byAuthor = new ArrayList<>();
-        for(Book book : Books) {
-            if (book.getAuthor().equals(author)) {
-                byAuthor.add(book);
-                System.out.println(book.toString());
+        ArrayList<Book> result = new ArrayList<>();
+        for(Book book : books) {
+            if (!author.isEmpty() && book.getAuthor().equals(author)) {
+                result.add(book);
+                System.out.println(" The book: " + book.toString() + "has been added to the collection with author " + author);
             }
         }
-        return byAuthor;
+        return result;
     }
+
     public void sortBooksByYear(){
-        Collections.sort(Books, Comparator.comparingInt(Book::getYear));
+        books.sort(Comparator.comparingInt(Book::getYear));
     }
     public void sortBooksByAuthor() {
-        Collections.sort(Books, Comparator.comparing(Book::getAuthor));
+        books.sort(Comparator.comparing(Book::getAuthor));
     }
     public void sortBooksByRating() {
-        Collections.sort(Books, Comparator.comparingInt(Book::getRating));
+        books.sort(Comparator.comparingInt(Book::getRating));
     }
 }
